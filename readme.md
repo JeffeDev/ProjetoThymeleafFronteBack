@@ -16,6 +16,8 @@ seguindo boas práticas de desenvolvimento.
 
 ## 🛠️ Tecnologias utilizadas
 
+Java 1.8 com Maven
+
 Vamos criar um projeto Java, Maven, versão 2.7 no 
 pacote br.com.alura.mvc e vamos adicionar algumas dependências: 
 
@@ -33,15 +35,48 @@ Banco de Dados MySQL
 
 #### Dependências Maven
 ````
-    	<dependency>
+	<dependencies>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+		      <groupId>mysql</groupId>
+		      <artifactId>mysql-connector-java</artifactId>
+		      <scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+		      <groupId>org.springframework.boot</groupId>
+		      <artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>		
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
 
 ````
 
@@ -52,8 +87,8 @@ Banco de Dados MySQL
 **FrontEnd**: Thymeleaf, Bootstrap, HTML5, CSS e VueJS
 
 
-O Spring Data JPA utiliza interfaces para fazer a comunicação, então já 
-vamos retirar a class e substituir por interface:
+O Spring Data JPA utiliza interfaces para fazer a comunicação, 
+retirei a class e substitui por interface:
 
 ```java
 package br.com.alura.mvc.mudi.repository;
@@ -69,7 +104,7 @@ import org.springframework.stereotype.Repository;
 import br.com.alura.mvc.mudi.model.Pedido;
 
 @Repository
-public ~~class~~ interface PedidoRepository {
+public class interface PedidoRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
@@ -86,20 +121,14 @@ E não precisa colocar este “Select p from Pedido p” o Spring data
 já sabe fazer isto sem que precise implementar alguma coisa.
 
 ## 🎯 O que o projeto faz:
-  - [X] Um cadastro para demonstração, e utilização das tecnologias.
+  - [X] Um cadastro de Pedidos.
 
 
 ## 📸 Screenshots
 ####  📌 Back-End e Front-End 
+
 aplicação back-end usando as tecnologias Java com Spring;
-aplicação mobile usando a tecnologia TotalCross;
-
-O Modelo ER deve ser disponibilizado também no projeto do Github, 
-como arquivo original da ferramenta de modelagem utilizada e também como imagem/pdf;
-
-Deve seguir os princípios de clean code e TDD;
-Deve utilizar o Maven para gerenciar as dependências;
-Deve utilizar o formato JSON para integração entre as aplicações.
+aplicação Front-End com Thymeleaf, JueJS e BootsTrap
 
 
 ## ❔ Dúvidas?!
